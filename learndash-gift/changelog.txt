@@ -1,0 +1,26 @@
+1.1.0 - 30.11.23
+ - feature: optionally schedule gift delivery
+ - feature: added WooCommerce HPOS compatibility
+ - feature: optionally attribute gift subcription to gift recipient instead of buyer
+ - feature: optionally enable extra field for recipient's last name
+ - feature: optionally hide gift field if there are no LearnDash courses in cart
+ - feature: add action hook for 3rd party events, that fires after successful gift purchase (ldg_gift_purchase)
+ - feature: display generated password in the new account notification email (to the user)
+ - feature: override default email template with your custom template by placing your template into your-theme-folder/woocommerce/emails/
+ - feature: customize gift email text easily in plugin settings
+ - feature: save recipient's user first_name and last_name (break gift_name field value by space symbol)
+ - feature: filter that lets you disable the links in the item list in the custom email message
+ - feature: added action hook 'ldg_after_create_new_customer'
+ - feature: added action hook 'ldg_after_get_sender_user_id'
+ - feature: optionally enable logging
+ - tweak: improved compatibility with WooCommerce Subscriptions 4.2+
+ - tweak: trim spaces and breaklines from gift email, otherwise is_email check fails
+ - tweak: update first_name and last_name user meta (second time to double check)
+ - tweak: force gift_purchase checkbox to empty value on load and set to value 1 on checked
+ - tweak: switched gift_note field type form textarea to input to prevent potential conflicts
+ - tweak: rewrote gift_purchase checkbox change logic from toggle to a more defined slideDown/slideUp logic
+ - tweak: fixed the case where recipient_user_id access was removed, because order user is switched to recipient_user_id and when supplied sender_user_id equals 0, order user access is removed
+ - tweak: made gift note field optional, display empty string in order meta
+
+1.0.0 - 01.04.21
+ - initial release (supports LearnDash + WooCommerce, immediate delivery, inherits WooCommerce email template)

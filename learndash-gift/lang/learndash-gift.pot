@@ -1,0 +1,333 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnDash Gift a Course by BogdanFix\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-30 01:06+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Loco-Version: 2.5.0; wp-5.6.2\n"
+"X-Domain: learndash-gift\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: learndash-gift.php\n"
+"X-Poedit-SearchPath-2: learndash-gift-admin.php\n"
+"X-Poedit-SearchPath-3: includes/class-wc-gift-order-email.php\n"
+"X-Poedit-SearchPath-4: includes/emails/gift-message.php\n"
+"X-Poedit-SearchPath-5: includes/emails/plain/gift-message.php\n"
+
+#: includes/class-wc-gift-order-email.php:46 learndash-gift.php:396
+#: learndash-gift.php:1257
+msgid "Gift message"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:47
+msgid ""
+"Gift message emails are sent to a gift recipient, containing a gift message, "
+"when customer (gift sender) places a gift order."
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:72
+msgid "{sender_name} sent you a gift on {site_title}!"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:84
+msgid "You've received a gift"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:199
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:201
+msgid "Enable this email notification"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:205
+msgid "Subject"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:209
+#: includes/class-wc-gift-order-email.php:218
+#, php-format
+msgid "Available placeholders: %s"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:214
+msgid "Email heading"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:223
+msgid "Email type"
+msgstr ""
+
+#: includes/class-wc-gift-order-email.php:225
+msgid "Choose which format of email to send."
+msgstr ""
+
+#: includes/emails/gift-message.php:90
+#: includes/emails/plain/gift-message.php:62
+#, php-format
+msgid "Hi %s,"
+msgstr ""
+
+#: includes/emails/gift-message.php:91
+#: includes/emails/plain/gift-message.php:63
+#, php-format
+msgid "%s has sent you this gift:"
+msgstr ""
+
+#: includes/emails/gift-message.php:104
+#: includes/emails/plain/gift-message.php:72
+msgid "The following note has been sent along with this gift:"
+msgstr ""
+
+#: includes/emails/gift-message.php:108
+#: includes/emails/plain/gift-message.php:80
+msgid "You will receive the access to your gift shortly after this message."
+msgstr ""
+
+#: includes/emails/gift-message.php:110
+#: includes/emails/plain/gift-message.php:82
+msgid "Cheers!"
+msgstr ""
+
+#: learndash-gift-admin.php:40
+msgid "Your license"
+msgstr ""
+
+#: learndash-gift-admin.php:115
+#, php-format
+msgid "Update to %s is available!"
+msgstr ""
+
+#: learndash-gift-admin.php:118
+msgid "Description:"
+msgstr ""
+
+#: learndash-gift-admin.php:124
+msgid "Go to Plugins menu to update"
+msgstr ""
+
+#: learndash-gift-admin.php:131
+msgid "Get the license key now"
+msgstr ""
+
+#: learndash-gift-admin.php:137
+msgid "You have the latest version"
+msgstr ""
+
+#: learndash-gift-admin.php:157
+msgid "Undefined error. Please, contact plugin support."
+msgstr ""
+
+#: learndash-gift-admin.php:162
+msgid "Undefined server response. Please, contact plugin support."
+msgstr ""
+
+#: learndash-gift-admin.php:167
+msgid ""
+"Server variable SERVER_NAME is not defined. Please, contact your hosting "
+"support."
+msgstr ""
+
+#: learndash-gift-admin.php:180
+msgid "License key"
+msgstr ""
+
+#: learndash-gift-admin.php:187
+msgid "Paste your key here..."
+msgstr ""
+
+#: learndash-gift-admin.php:188
+msgid "Activate"
+msgstr ""
+
+#: learndash-gift-admin.php:195
+msgid "Remove key"
+msgstr ""
+
+#: learndash-gift-admin.php:208
+msgid "Settings"
+msgstr ""
+
+#: learndash-gift-admin.php:220
+msgid "Customize gift message"
+msgstr ""
+
+#: learndash-gift-admin.php:226
+msgid "Line breaks will turn into paragraphs. Available shortcodes"
+msgstr ""
+
+#: learndash-gift-admin.php:233
+msgid "Hide all gift fields if there are no courses in cart"
+msgstr ""
+
+#: learndash-gift-admin.php:244 learndash-gift-admin.php:264
+#: learndash-gift-admin.php:284 learndash-gift-admin.php:304
+#: learndash-gift-admin.php:324
+msgid "yes"
+msgstr ""
+
+#: learndash-gift-admin.php:246
+msgid ""
+"Checkbox \"Purchase as a gift\" and all fields will not be shown on checkout "
+"if there are no courses added to the cart."
+msgstr ""
+
+#: learndash-gift-admin.php:253
+msgid "Enable last name field"
+msgstr ""
+
+#: learndash-gift-admin.php:266
+msgid "If you want to have a distinct \"Last name\" field, enable this option."
+msgstr ""
+
+#: learndash-gift-admin.php:273
+msgid "Attribute gift subscription ownership to recipient"
+msgstr ""
+
+#: learndash-gift-admin.php:286
+msgid ""
+"Enable this option to make recipient the owner of the gifted subscription "
+"instead of the buyer."
+msgstr ""
+
+#: learndash-gift-admin.php:293
+msgid "Enable scheduled gift delivery"
+msgstr ""
+
+#: learndash-gift-admin.php:306
+msgid ""
+"If you want to allow gift buyers to pick date and time for a future gift "
+"delivery, enable this option."
+msgstr ""
+
+#: learndash-gift-admin.php:313
+msgid "Enable logging"
+msgstr ""
+
+#: learndash-gift.php:104
+msgid "JSON parse error."
+msgstr ""
+
+#: learndash-gift.php:216
+#, php-format
+msgid ""
+"<b>%s is not activated.</b> Please, activate it <a href=\"%s\">here</a> to "
+"receive regular updates, new features and support."
+msgstr ""
+
+#: learndash-gift.php:248
+msgid "update is available"
+msgstr ""
+
+#: learndash-gift.php:249
+msgid "Check out what's new"
+msgstr ""
+
+#: learndash-gift.php:250
+msgid "or"
+msgstr ""
+
+#: learndash-gift.php:250
+msgid "go to Plugins menu to update"
+msgstr ""
+
+#: learndash-gift.php:294
+msgid "Oops, you can't access this page."
+msgstr ""
+
+#: learndash-gift.php:359
+msgid "Purchase as a gift?"
+msgstr ""
+
+#: learndash-gift.php:366
+msgid "Recipient's first name"
+msgstr ""
+
+#: learndash-gift.php:367
+msgid "Who will receive your gift?"
+msgstr ""
+
+#: learndash-gift.php:378
+msgid "Recipient's last name"
+msgstr ""
+
+#: learndash-gift.php:387 learndash-gift.php:1252
+msgid "Recipient's email"
+msgstr ""
+
+#: learndash-gift.php:388
+msgid "His or her email address"
+msgstr ""
+
+#: learndash-gift.php:397
+msgid "Personalize your gift with a little note"
+msgstr ""
+
+#: learndash-gift.php:408
+msgid "When to deliver a gift?"
+msgstr ""
+
+#: learndash-gift.php:546
+msgid "optional"
+msgstr ""
+
+#: learndash-gift.php:576
+msgid ""
+"Please, enter name and email of gift recipient, and also your message along "
+"with this gift."
+msgstr ""
+
+#: learndash-gift.php:591
+msgid "Please, enter valid email of gift recipient."
+msgstr ""
+
+#: learndash-gift.php:610
+msgid "Scheduled delivery time is not valid."
+msgstr ""
+
+#: learndash-gift.php:620
+msgid "Scheduled delivery time should be set at least 1 hour into the future."
+msgstr ""
+
+#: learndash-gift.php:811
+msgid "Gift delivery scheduled."
+msgstr ""
+
+#: learndash-gift.php:1117
+#, php-format
+msgid "Access for %s was generated."
+msgstr ""
+
+#: learndash-gift.php:1226
+msgid "scheduled"
+msgstr ""
+
+#: learndash-gift.php:1227
+msgid "not scheduled"
+msgstr ""
+
+#: learndash-gift.php:1243
+msgid "Purchased as a gift"
+msgstr ""
+
+#: learndash-gift.php:1247
+msgid "Recipient's name"
+msgstr ""
+
+#: learndash-gift.php:1264
+msgid "Gift delivery scheduled at"
+msgstr ""
+
+#: learndash-gift.php:1269
+msgid "Gift delivery status"
+msgstr ""
