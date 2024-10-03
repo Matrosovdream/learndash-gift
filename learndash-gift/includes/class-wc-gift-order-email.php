@@ -98,19 +98,21 @@ class WC_Gift_Order_Email extends WC_Email {
 
         if( !empty( $order_id ) )
         {
-            $this->object = wc_get_order( $order_id );
+
+            $order = wc_get_order( $order_id );
+            $this->object = $order;
 
             if( $this->object )
             {
-                $already_sent                        = get_post_meta( $order_id, '_ldg_gift_message_sent', TRUE );
+                $already_sent                        = $order->get_meta('_ldg_gift_message_sent', true);
 
-                $this->recipient                     = get_post_meta( $order_id, '_gift_email', TRUE );
-                $this->gift_name                     = get_post_meta( $order_id, '_gift_name', TRUE );
-                $this->gift_last_name                = get_post_meta( $order_id, '_gift_last_name', TRUE );
-                $this->gift_note                     = get_post_meta( $order_id, '_gift_note', TRUE );
+                $this->recipient                     = $order->get_meta('_gift_email', true);
+                $this->gift_name                     = $order->get_meta('_gift_name', true);
+                $this->gift_last_name                = $order->get_meta('_gift_last_name', true);
+                $this->gift_note                     = $order->get_meta('_gift_note', true);
 
-                $this->placeholders['{sender_name}'] = $this->object->get_billing_first_name();
-                $this->placeholders['{order_date}']  = wc_format_datetime( $this->object->get_date_created() );
+                $this->placeholders['{sender_name}'] = $order->get_billing_first_name();
+                $this->placeholders['{order_date}']  = wc_format_datetime( $order->get_date_created() );
 
                 $options = get_option('gb_ldg_options');
 
@@ -127,7 +129,8 @@ class WC_Gift_Order_Email extends WC_Email {
             {
                 $this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 
-                update_post_meta( $order_id, '_ldg_gift_message_sent', 1 );
+                $order->update_meta_data( '_ldg_gift_message_sent', 1 );
+                $order->save();
             }
         }
 

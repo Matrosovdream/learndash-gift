@@ -29,6 +29,12 @@ define( 'GB_LDG_VER', '1.1.0' );
 define( 'GB_LDG_ID', 'learndash_gift' );
 define( 'GB_LDG_FILE', 'learndash-gift/learndash-gift.php' );
 
+// Declare WooCommerce HPOS (High-performance order storage)
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
 
 /*
 	TODO:
@@ -123,13 +129,6 @@ function gb_ldg_check_update()
         set_site_transient( 'gb_ldg_update_data', $update, 21600 ); // 6
     }
 
-    // declare WooCommerce HPOS compatibility
-
-	add_action( 'before_woocommerce_init', function() {
-		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-		}
-	} );
 }
 add_action( 'init', 'gb_ldg_check_update' );
 
@@ -733,19 +732,15 @@ function gb_ldg_process_purchase( $order_id )
 
 	if( $custom_tables_enabled )
 	{
-		$gift_purchase = $order->get_meta( '_gift_purchase', TRUE );
-
-		$gift_delivery_datetime = $order->get_meta( '_gift_delivery_datetime', TRUE );
-
-		$gift_delivery_status = $order->get_meta( '_gift_delivery_status', TRUE );
+		$gift_purchase = $order->get_meta( '_gift_purchase', true);
+		$gift_delivery_datetime = $order->get_meta( '_gift_delivery_datetime', true);
+		$gift_delivery_status = $order->get_meta( '_gift_delivery_status', true);
 	}
 	else
 	{
-		$gift_purchase = get_post_meta( $order_id, '_gift_purchase', TRUE );
-
-		$gift_delivery_datetime = get_post_meta( $order_id, '_gift_delivery_datetime', TRUE );
-
-		$gift_delivery_status = get_post_meta( $order_id, '_gift_delivery_status', TRUE );
+		$gift_purchase = get_post_meta( $order_id, '_gift_purchase', true);
+		$gift_delivery_datetime = get_post_meta( $order_id, '_gift_delivery_datetime', true);
+		$gift_delivery_status = get_post_meta( $order_id, '_gift_delivery_status', true);
 	}
 
 	$current_action = current_action();
@@ -781,11 +776,9 @@ function gb_ldg_process_purchase( $order_id )
 			);
 
 			// set scheduled status
-
 			$scheduled_status = 'pending';
 
 			// log delivery status update
-
 			if( is_wp_error( $scheduled ) )
 			{
 				$scheduled_status = 'error';
@@ -818,7 +811,6 @@ function gb_ldg_process_purchase( $order_id )
 			if( $custom_tables_enabled )
 			{
 				$order->update_meta_data( '_gift_delivery_status', $scheduled_status );
-
 				$order->save();
 			}
 			else
@@ -846,30 +838,29 @@ function gb_ldg_process_purchase( $order_id )
 
 			if( $custom_tables_enabled )
 			{
-				$gift_name = $order->get_meta( '_gift_name', TRUE );
-				$gift_last_name = $order->get_meta( '_gift_last_name', TRUE );
-				$gift_email = $order->get_meta( '_gift_email', TRUE );
-				$gift_note = $order->get_meta( '_gift_note', TRUE );
+				$gift_name = $order->get_meta( '_gift_name', true);
+				$gift_last_name = $order->get_meta( '_gift_last_name', true);
+				$gift_email = $order->get_meta( '_gift_email', true);
+				$gift_note = $order->get_meta( '_gift_note', true);
 			}
 			else
 			{
-				$gift_name = get_post_meta( $order_id, '_gift_name', TRUE );
-				$gift_last_name = get_post_meta( $order_id, '_gift_last_name', TRUE );
-				$gift_email = get_post_meta( $order_id, '_gift_email', TRUE );
-				$gift_note = get_post_meta( $order_id, '_gift_note', TRUE );
+				$gift_name = get_post_meta( $order_id, '_gift_name', true);
+				$gift_last_name = get_post_meta( $order_id, '_gift_last_name', true);
+				$gift_email = get_post_meta( $order_id, '_gift_email', true);
+				$gift_note = get_post_meta( $order_id, '_gift_note', true);
 			}
 
 			if( !empty( $gift_name ) && !empty( $gift_email ) ) // && !empty( $gift_note ) )
 			{
 				// check meta
-
 				if( $custom_tables_enabled )
 				{
-					$check = $order->get_meta( '_ldg_gift_processed', TRUE );
+					$check = $order->get_meta( '_ldg_gift_processed', true);
 				}
 				else
 				{
-					$check = get_post_meta( $order_id, '_ldg_gift_processed', TRUE );
+					$check = get_post_meta( $order_id, '_ldg_gift_processed', true);
 				}
 
 				if( !empty( $check ) )
@@ -913,7 +904,6 @@ function gb_ldg_process_purchase( $order_id )
 					)
 					{
 						$contains_subscriptions = TRUE;
-
 						break;
 					}
 				}
@@ -982,7 +972,6 @@ function gb_ldg_process_purchase( $order_id )
 
 					// grant course access
 					// TODO: handle scenario when order contains subscriptions + simple products
-
 					$note_label = '';
 
 					// check if LearnDash + WooCommerce add-on is installed
@@ -1107,7 +1096,6 @@ function gb_ldg_process_purchase( $order_id )
 					do_action( 'ldg_gift_purchase', $order_id, $order );
 
 					// revert order user
-
 					$order->set_customer_id( $sender_user_id );
 
 					// add order note
@@ -1125,8 +1113,6 @@ function gb_ldg_process_purchase( $order_id )
 					if( $custom_tables_enabled )
 					{
 						$order->update_meta_data( '_ldg_gift_processed', 1 );
-
-						// $order->save();
 					}
 					else
 					{
@@ -1134,7 +1120,6 @@ function gb_ldg_process_purchase( $order_id )
 					}
 
 					// update scheduled delivery status
-
 					if(
 						!empty( $gift_delivery_datetime ) &&
 						!empty( $gift_delivery_status ) &&
@@ -1144,8 +1129,6 @@ function gb_ldg_process_purchase( $order_id )
 						if( $custom_tables_enabled )
 						{
 							$order->update_meta_data( '_gift_delivery_status', 'delivered' );
-
-							// $order->save();
 						}
 						else
 						{
@@ -1159,11 +1142,9 @@ function gb_ldg_process_purchase( $order_id )
 					}
 
 					// save order meta
-
 					$order->save();
 
 					// log
-
 					gb_ldg_log( array( 
 						'info' => 'Gift process locked for current order.', 
 						'order_id' => $order_id 
@@ -1211,20 +1192,16 @@ function gb_ldg_display_admin_order_meta( $order )
 {
 	$order_id = $order->get_id();
 
-	$gift_purchase = get_post_meta( $order_id, '_gift_purchase', TRUE );
+	$gift_purchase = $order->get_meta('_gift_purchase', true);
 
 	if( !empty( $gift_purchase ) )
 	{
-
-		
-		
-		
-		$gift_name = get_post_meta( $order_id, '_gift_name', TRUE );
-		$gift_last_name = get_post_meta( $order_id, '_gift_last_name', TRUE );
-		$gift_email = get_post_meta( $order_id, '_gift_email', TRUE );
-		$gift_note = get_post_meta( $order_id, '_gift_note', TRUE );
-		$gift_delivery_datetime = get_post_meta( $order_id, '_gift_delivery_datetime', TRUE );
-		$gift_delivery_status = get_post_meta( $order_id, '_gift_delivery_status', TRUE ); // pending, delivered
+		$gift_name = $order->get_meta('_gift_name', true);
+		$gift_last_name = $order->get_meta('_gift_last_name', true);
+		$gift_email = $order->get_meta('_gift_email', true);
+		$gift_note = $order->get_meta('_gift_note', true);
+		$gift_delivery_datetime = $order->get_meta('_gift_delivery_datetime', true);
+		$gift_delivery_status = $order->get_meta('_gift_delivery_status', true); // pending, delivered
 
 		$gift_delivery_scheduled = ( 
 			wp_next_scheduled( 'gb_ldg_scheduled_delivery', array( $order_id ) ) ? 
@@ -1312,7 +1289,6 @@ function gb_ldg_gift_order_woocommerce_get_template( $template, $template_name, 
 		$template = $template_path . $template_name;
 
 		// if template exists in theme folder, override
-
 		$theme_path = get_template_directory() . '/woocommerce/';
 
 		if( file_exists( $theme_path . $template_name ) )
